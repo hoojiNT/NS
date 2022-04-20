@@ -77,6 +77,7 @@
 
 import {useCategoryStore} from "./stores/Category";
 
+
 export default {
   name: 'App',
   setup() {
@@ -84,7 +85,7 @@ export default {
     return {categoryStore}
   },
   beforeCreate() {
-    this.categoryStore.getCategories().then(x=> console.log(this.categoryStore.))
+    this.categoryStore.getCategories().then(x=> console.log(this.categoryStore))
   },
   data: () => ({
     links: [

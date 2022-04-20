@@ -1,7 +1,7 @@
 import APIs from "./api";
-import axios from "axios";
+import  ClientHelper from "../helper/ClientHelper.js"
 import {defineStore} from "pinia";
-import {removeUnnecessaryItems} from "@babel/preset-env/lib/filter-items";
+// import {removeUnnecessaryItems} from "@babel/preset-env/lib/filter-items";
 
 export const useCategoryStore = defineStore({
     id: 'category',
@@ -13,7 +13,7 @@ export const useCategoryStore = defineStore({
     },
     actions: {
         getCategories() {
-            return axios.get(APIs.Category).then(x => this.state.categories = x.data)
+            return ClientHelper.get(APIs.Category).then(x => this.state.categories = x.data)
         }
     }
 })

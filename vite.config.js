@@ -16,6 +16,7 @@ export default defineConfig({
   define: { 'process.env': {} },
   resolve: {
     alias: {
+      web3: path.resolve(__dirname, './node_modules/web3/dist/web3.min.js'),
       '@': path.resolve(__dirname, 'src'),
     },
   },
