@@ -1,99 +1,71 @@
 <template>
-  <v-app id="inspire">
-    <v-app-bar app color="green" flat>
-      <v-container class="py-0 fill-height">
-        <v-avatar
-            class="mr-10"
-            color="grey darken-1"
-            size="32"
-        ></v-avatar>
-
-        <v-btn
-            v-for="link in links"
-            :key="link"
-            text
-        >
-          {{ link }}
-        </v-btn>
-
-        <v-spacer></v-spacer>
-
-        <v-responsive max-width="260">
-          <v-text-field
-              dense
-              flat
-              hide-details
-              rounded
-              solo-inverted
-          ></v-text-field>
-        </v-responsive>
-      </v-container>
-    </v-app-bar>
-
-    <v-main class="grey lighten-3">
-      <v-container>
-        <v-row>
-          <v-col cols="2">
-            <v-sheet rounded="lg">
-              <v-list color="transparent">
-                <v-list-item
-                    v-for="n in 5"
-                    :key="n"
-                    link
-                >
-
-                    <v-list-item-title>
-                      List Item {{ n }}
-                    </v-list-item-title>
-
-                </v-list-item>
-
-                <v-divider class="my-2"></v-divider>
-
-                <v-list-item
-                    link
-                    color="grey lighten-4"
-                >
-                </v-list-item>
-              </v-list>
-            </v-sheet>
-          </v-col>
-
-          <v-col>
-            <v-sheet
-                min-height="70vh"
-                rounded="lg"
-            >
-              <!--  -->
-            </v-sheet>
-          </v-col>
-        </v-row>
-      </v-container>
-    </v-main>
-  </v-app>
+  <a-layout>
+    <!--    topbar-->
+    <top-bar/>
+    <!--    sidebar-->
+    <side-bar/>
+  </a-layout>
 </template>
+<script lang="js">
+import {UserOutlined, LaptopOutlined, NotificationOutlined} from '@ant-design/icons-vue';
+import {defineComponent, ref} from 'vue';
+import TopBar from "./components/layout/TopBar.vue";
+import SideBar from "./components/layout/Sidebar.vue";
 
-<script>
-
-import {useCategoryStore} from "./stores/Category";
-
-
-export default {
-  name: 'App',
+export default defineComponent({
+  components: {
+    SideBar,
+    TopBar,
+    UserOutlined,
+    LaptopOutlined,
+    NotificationOutlined,
+  },
   setup() {
-    const categoryStore = useCategoryStore()
-    return {categoryStore}
+    return {
+      collapsed: ref(false),
+
+    };
   },
-  beforeCreate() {
-    this.categoryStore.getCategories().then(x=> console.log(this.categoryStore))
-  },
-  data: () => ({
-    links: [
-      'Dashboard',
-      'Messages',
-      'Profile',
-      'Updates',
-    ],
-  }),
-}
+});
 </script>
+
+
+<!--<script>-->
+
+
+
+// export default {
+//   name: 'App',
+//   setup() {
+//
+//     return {}
+//   },
+
+//   data: () => ({
+//     links: [
+//       'Dashboard',
+//       'Messages',
+//       'Profile',
+//       'Updates',
+//     ],
+//   }),
+// }
+<!--</script>-->
+<style>
+#components-layout-demo-top-side-2 .logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.ant-row-rtl #components-layout-demo-top-side-2 .logo {
+  float: right;
+  margin: 16px 0 16px 24px;
+}
+
+.site-layout-background {
+  background: #fff;
+}
+</style>
