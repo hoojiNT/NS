@@ -7,9 +7,15 @@
         mode="horizontal"
         :style="{ lineHeight: '64px' }"
     >
-      <a-menu-item key="1">Trang chủ</a-menu-item>
-      <a-menu-item key="2">Sản phẩm</a-menu-item>
-      <a-menu-item key="3">Giới thiệu</a-menu-item>
+      <router-link to="/">
+        <a-menu-item key="1">Trang chủ</a-menu-item>
+      </router-link>
+      <router-link to="/product">
+        <a-menu-item key="2">Sản phẩm</a-menu-item>
+      </router-link>
+      <router-link to="/about">
+        <a-menu-item key="3">Giới thiệu</a-menu-item>
+      </router-link>
       <a-menu-item key="4">Tuyển dụng</a-menu-item>
     </a-menu>
   </a-layout-header>
